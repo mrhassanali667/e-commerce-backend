@@ -1,4 +1,3 @@
-import { getData } from "../services/get.js"
 import { postData } from "../services/post.js"
 
 const postController = async (req, res) => {
@@ -7,15 +6,12 @@ const postController = async (req, res) => {
         res.status(201).json({
             message: "user successfully added",
             data: user,
-            total: 1,
             status: 201
         })
     } catch (error) {
-        console.log(error)
         res.status(201).json({
-            message: error.code === 11000 ? "email is already in use" : error.message,
+            message: error?.message,
             data: null,
-            total: 0,
             status: 500
         })
 

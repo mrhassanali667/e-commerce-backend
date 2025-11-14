@@ -1,7 +1,4 @@
 import { deleteData } from "../services/delete.js"
-import { getData } from "../services/get.js"
-import { postData } from "../services/post.js"
-import { updateData } from "../services/update.js"
 
 const deleteController = async (req, res) => {
     try {
@@ -13,9 +10,9 @@ const deleteController = async (req, res) => {
         })
     } catch (error) {
         console.log(error)
-        let code = error.path === "_id" ? 404 : 500
+        let code = error?.code
         res.status(code).json({
-            message: error.path === "_id" ? "invalid id format" : error.message,
+            message: error?.message,
             status: code
         })
 

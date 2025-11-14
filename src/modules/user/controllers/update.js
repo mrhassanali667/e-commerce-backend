@@ -1,5 +1,3 @@
-import { getData } from "../services/get.js"
-import { postData } from "../services/post.js"
 import { updateData } from "../services/update.js"
 
 const updateController = async (req, res) => {
@@ -9,16 +7,14 @@ const updateController = async (req, res) => {
         res.status(200).json({
             message: "user successfully updated",
             data: user,
-            total: 1,
             status: 200
         })
     } catch (error) {
         console.log(error)
-        let code = error.path === "_id" ? 404 : 500
+        let code = error?.code
         res.status(code).json({
-            message: error.path === "_id" ? "user not found" : error.message,
+            message: error?.message,
             data: null,
-            total: 0,
             status: code
         })
 

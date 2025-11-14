@@ -1,16 +1,15 @@
 import { Router } from 'express'
-import { getController } from './controllers/get.js';
+import { getAllController, getOneController } from './controllers/get.js';
 import { postController } from './controllers/post.js';
 import { updateController } from './controllers/update.js';
 import { deleteController } from './controllers/delete.js'
 
 const userRoutes = Router();
 
-userRoutes.get('/', getController)
+userRoutes.get('/', getAllController)
+userRoutes.get('/user/:id', getOneController)
 userRoutes.post('/', postController)
 userRoutes.put('/:id', updateController)
 userRoutes.delete('/:id', deleteController)
 
-export {
-    userRoutes
-}
+export default userRoutes
