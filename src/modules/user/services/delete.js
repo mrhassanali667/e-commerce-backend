@@ -13,11 +13,7 @@ const deleteData = async (id) => {
             throw { message: err.message, code: 400 }
         }
     } catch (error) {
-        if (error.path) {
-            let err = new Error("server internal error.")
-            throw { message: err.message, code: 500 }
-        }
-        throw error
+        throw { message: "internal server error.", code: 500 }
     }
 }
 

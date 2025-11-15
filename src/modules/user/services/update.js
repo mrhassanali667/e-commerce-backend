@@ -13,7 +13,7 @@ const updateData = async (id, body) => {
             throw { message: err.message, code: 400 }
         }
         if (!name && !email && !password) {
-            let err = new Error("request contains invalid fields")
+            let err = new Error("request contains invalid fields.")
             throw { message: err.message, code: 400 }
         }
 
@@ -24,18 +24,14 @@ const updateData = async (id, body) => {
         }
         return data;
     } catch (error) {
-        if (error.code) {
+        if (error?.code) {
             if (error.code === 11000) {
                 let err = new Error("email already in use.")
                 throw { message: err.message, code: 409 }
             }
-        } else {
-            if (error.path) {
-                let err = new Error("internal server error.")
-                throw { message: err.message, code: 500 }
-            }
+            throw error
         }
-        throw error
+        throw { message: "internal erver error", code: 500 }
     }
 }
 

@@ -9,10 +9,11 @@ const postController = async (req, res) => {
             status: 201
         })
     } catch (error) {
-        res.status(201).json({
+        let code = error.code
+        res.status(code).json({
             message: error?.message,
             data: null,
-            status: 500
+            status: code
         })
 
     }
