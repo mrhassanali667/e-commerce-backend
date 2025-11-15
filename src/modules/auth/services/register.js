@@ -34,7 +34,7 @@ const signUpUser = async (body) => {
             throw { message: error?.message, code: 400 }
         }
 
-        throw { message: "internal server error.", code: 500 }
+        throw { message: error.message || "internal server error.", code: 500 }
     }
 }
 
