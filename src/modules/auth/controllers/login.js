@@ -10,9 +10,9 @@ const loginController = async (req, res) => {
             token: token
         })
     } catch (error) {
-        let code = error.code
+        let code = error?.code
         res.status(code).json({
-            message: error.message,
+            message: error?.message,
             user: null,
             status: code
         })
