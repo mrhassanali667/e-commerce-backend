@@ -2,7 +2,8 @@ import { postData } from "../services/post.js"
 
 const postController = async (req, res) => {
     try {
-        const user = await postData(req.body)
+        const token = req.headers?.authorization.split(" ")[1]
+        const user = await postData(token, req.body)
         res.status(201).json({
             message: "user successfully added",
             data: user,

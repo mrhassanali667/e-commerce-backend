@@ -13,4 +13,4 @@ const dataSchema = new Schema({
     }
 })
 
-export default mongoose.model('authusers', dataSchema)
+export default mongoose.model('AuthUser', dataSchema)

@@ -1,10 +1,33 @@
-import * as yup from 'yup'
+import * as Yup from "yup";
 
-const userScema = yup.object({
-    name: yup.string().required("name is required"),
-    email: yup.string().email("email must be a valid email").required("email is required"),
-    password: yup.string().required("password is required"),
+export const userSchema = Yup.object({
+    fullName: Yup.string()
+        .required("Full name is required"),
 
-})
+    phone: Yup.number("Phone must be a number")
+        .required("Phone is required"),
 
-export default userScema
+    age: Yup.number("Age must be a number")
+        .required("Age is required"),
+
+    address: Yup.object({
+        city: Yup.string()
+            .required("City is required"),
+
+        street: Yup.string()
+            .required("Street is required"),
+
+        postalCode: Yup.string()
+            .required("Postal code is required"),
+
+        country: Yup.string()
+            .required("Country is required")
+    }).required("Address is required"),
+
+    isSeller: Yup.boolean()
+        .required("isSeller is required")
+        .default(false),
+});
+
+
+export default userSchema

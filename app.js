@@ -1,7 +1,7 @@
 import express from 'express'
 import routes from './src/routes/index.js';
 import mongoose from 'mongoose';
-import ENV from './src/constants/inde.js';
+import ENV from './src/constants/index.js';
 import chalk from 'chalk';
 import cors from 'cors'
 

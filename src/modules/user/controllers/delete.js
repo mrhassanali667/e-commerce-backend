@@ -5,7 +5,7 @@ const deleteController = async (req, res) => {
         const { id } = req.params
         await deleteData(id)
         res.status(200).json({
-            message: "sser successfully deleted",
+            message: "user successfully deleted",
             status: 200
         })
     } catch (error) {

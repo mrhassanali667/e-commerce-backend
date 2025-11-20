@@ -2,7 +2,12 @@ import mongoose, { Schema } from "mongoose";
 
 
 const dataSchema = new Schema({
-    name: {
+    authId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'AuthUser',
+        required: true
+    },
+    fullName: {
         type: String,
         required: true
     },
@@ -11,10 +16,38 @@ const dataSchema = new Schema({
         required: true,
         unique: true
     },
-    password: {
-        type: String,
+    phone: {
+        type: Number,
         required: true
+    },
+    age: {
+        type: Number,
+        required: true
+    },
+    address: {
+        city: {
+            type: String,
+            required: true
+        },
+        street: {
+            type: String,
+            required: true
+        },
+        postalCode: {
+            type: String,
+            required: true
+        },
+        country: {
+            type: String,
+            required: true
+        }
+
+    },
+    isSeller: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 })
 
-export default mongoose.model('users', dataSchema)
+export default mongoose.model('User', dataSchema)
