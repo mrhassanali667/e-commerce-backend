@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import ENV from './src/constants/index.js';
 import chalk from 'chalk';
 import cors from 'cors'
+import './src/modules/upload/cloudinary/index.js'
 
 const app = express();
 const port = 3000;

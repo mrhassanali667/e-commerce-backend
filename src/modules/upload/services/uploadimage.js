@@ -1,8 +1,17 @@
-const imageUploadController = (req, res) => {
-    console.log(req.file)
-    res.json({
-        message: "file succcessfully uploaded",
-        status: 200
-    })
+import { v2 as cloudinary } from 'cloudinary'
+
+const uploadImage = async (file) => {
+    const uploadResult = await cloudinary.uploader
+        .upload(
+            `src/modules/upload/storage/images/${file.filename}`, {
+            folder: "images",
+            public_id: 'image',
+        }
+        )
+        .catch((error) => {
+            console.log(error);
+        });
+
+    console.log(uploadResult);
 }
-export default imageUploadController
+export default uploadImage

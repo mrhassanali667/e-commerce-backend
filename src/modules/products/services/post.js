@@ -20,7 +20,7 @@ const postData = async (body) => {
             throw error
         }
 
-        if (error?.name === "ValidationError") {
+        if (error?.name === "ValidationError") {    
             throw { message: error?.message, code: 400 }
         }
 

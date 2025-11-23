@@ -7,10 +7,9 @@ const uploadRoutes = Router()
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, `src/modules/upload/files/${file.fieldname}s`)
+        cb(null, `src/modules/upload/storage/${file.fieldname}s`)
     },
     filename: function (req, file, cb) {
-        console.log(file)
         const uniqueId = Date.now().toString(36)
         cb(null, `${uniqueId}-${file.fieldname}.${file.mimetype.split("/")[1]}`)
     }
