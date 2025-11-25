@@ -1,10 +1,11 @@
 import uploadVideo from "../services/uploadvideo.js"
 
-const videoUploadController = (req, res) => {
+const videoUploadController = async (req, res) => {
     try {
-        uploadVideo(req.file)
+        const URL = await uploadVideo(req.file)
         res.json({
             message: "file succcessfully uploaded",
+            videoUrl: URL,
             status: 200
         })
     } catch (error) {

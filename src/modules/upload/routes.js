@@ -1,9 +1,7 @@
 import { Router } from "express";
 import multer from "multer";
-import uploadFile from "./upoadFile.js";
 import imageUploadController from "./controllers/uploadimage.js";
 import videoUploadController from "./controllers/uploadvideo.js";
-import fileUploadController from "./controllers/uploadfile.js";
 
 const uploadRoutes = Router()
 
@@ -18,11 +16,7 @@ const storage = multer.diskStorage({
 })
 
 const fileFilter = (req, file, cb) => {
-
-    if (req.path === "/file") {
-        return cb(null, true)
-    }
-    if (true) {
+    if (file.mimetype.startsWith(req.path.split("/")[1])) {
         cb(null, true)
     } else {
         cb(new Error("this file is not allowed"), false)
@@ -34,6 +28,5 @@ const upload = multer({ storage: storage, fileFilter: fileFilter })
 
 uploadRoutes.post('/image', upload.single("image"), imageUploadController)
 uploadRoutes.post('/video', upload.single("video"), videoUploadController)
-uploadRoutes.post('/file', upload.single("file"), fileUploadController)
 
 export default uploadRoutes

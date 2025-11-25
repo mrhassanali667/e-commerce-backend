@@ -1,10 +1,11 @@
 import uploadImage from "../services/uploadimage.js"
 
-const imageUploadController = (req, res) => {
+const imageUploadController = async (req, res) => {
     try {
-        uploadImage(req.file)
+        const URL = await uploadImage(req.file)
         res.json({
-            message: "file succcessfully uploaded",
+            message: "image succcessfully uploaded",
+            imageUrl: URL,
             status: 200
         })
     } catch (error) {
