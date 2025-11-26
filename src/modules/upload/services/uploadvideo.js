@@ -17,7 +17,8 @@ const uploadVideo = async (file) => {
         return uploadedVideo.url
     } catch (error) {
         console.log(error)
-        throw error
+        throw { message: new Error("Internal Server Error").message, code: 500 }
+
     }
 
 }

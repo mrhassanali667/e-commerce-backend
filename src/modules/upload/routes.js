@@ -15,16 +15,8 @@ const storage = multer.diskStorage({
     }
 })
 
-const fileFilter = (req, file, cb) => {
-    if (file.mimetype.startsWith(req.path.split("/")[1])) {
-        cb(null, true)
-    } else {
-        cb(new Error("this file is not allowed"), false)
-    }
 
-}
-
-const upload = multer({ storage: storage, fileFilter: fileFilter })
+const upload = multer({ storage: storage })
 
 uploadRoutes.post('/image', upload.single("image"), imageUploadController)
 uploadRoutes.post('/video', upload.single("video"), videoUploadController)

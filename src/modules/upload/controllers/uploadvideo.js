@@ -4,7 +4,7 @@ const videoUploadController = async (req, res) => {
     try {
         const URL = await uploadVideo(req.file)
         res.json({
-            message: "file succcessfully uploaded",
+            message: "Video Succcessfully Uploaded",
             videoUrl: URL,
             status: 200
         })
